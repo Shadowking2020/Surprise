@@ -1,0 +1,206 @@
+izma.html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For Izma 🤍</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  font-family: "Comic Sans MS", "Segoe UI", cursive;
+}
+
+body{
+  margin:0;
+  min-height:100vh;
+  background:linear-gradient(135deg,#ffd6ec,#fbc2ff,#cdb4ff);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+
+/* MAIN CARD */
+.container{
+  background:white;
+  padding:26px;
+  border-radius:22px;
+  width:92%;
+  max-width:420px;
+  text-align:center;
+  box-shadow:0 0 35px rgba(255,80,180,.35);
+  animation:pop .9s ease;
+}
+
+@keyframes pop{
+  from{transform:scale(.7);opacity:0}
+  to{transform:scale(1);opacity:1}
+}
+
+h1{
+  font-size:28px;
+  color:#ff4da6;
+}
+
+p{
+  font-size:16px;
+  margin-top:14px;
+  color:#555;
+}
+
+/* BUTTONS */
+button{
+  margin-top:22px;
+  padding:14px 26px;
+  font-size:16px;
+  border:none;
+  border-radius:30px;
+  background:linear-gradient(135deg,#ff6fb1,#9b6bff);
+  color:white;
+  cursor:pointer;
+  transition:.25s;
+}
+
+button:active{
+  transform:scale(.95);
+}
+
+.options button{
+  width:120px;
+  margin:14px;
+}
+
+/* CONFETTI */
+.confetti{
+  position:absolute;
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  animation:fall 4s linear infinite;
+}
+
+@keyframes fall{
+  0%{transform:translateY(-10vh)}
+  100%{transform:translateY(110vh)}
+}
+
+/* SMALL SCREEN TWEAKS */
+@media(max-width:380px){
+  h1{font-size:24px;}
+  p{font-size:15px;}
+}
+</style>
+</head>
+
+<body>
+
+<div id="confetti-container"></div>
+
+<div class="container" id="screen">
+
+<h1>🎉 HI IZMA 🤍 🎉</h1>
+<p>I made something special just for you…</p>
+
+<button onclick="goNext()">Next ➜</button>
+
+</div>
+
+<script>
+let noCount=0;
+const screen=document.getElementById("screen");
+
+/* CONFETTI */
+for(let i=0;i<35;i++){
+  const c=document.createElement("div");
+  c.className="confetti";
+  c.style.left=Math.random()*100+"vw";
+  c.style.animationDelay=Math.random()*4+"s";
+  c.style.background=`hsl(${Math.random()*360},100%,80%)`;
+  document.getElementById("confetti-container").appendChild(c);
+}
+
+/* SCREENS */
+
+function goNext(){
+screen.innerHTML=`
+<h1>Are you my best friend? 🤍</h1>
+<div class="options">
+<button onclick="yes()">YES 💕</button>
+<button onclick="no()">NO 💔</button>
+</div>
+`;
+}
+
+function no(){
+noCount++;
+
+let msg="";
+if(noCount===1){
+msg="☹️☹️☹️ whyyy… am I not good enough?";
+}
+else if(noCount===2){
+msg="🥲🥲🥲 don’t do this Izma… I’m getting worried...";
+}
+else{
+msg="😭😭😭 pleaseee… think again...";
+}
+
+screen.innerHTML=`
+<h1>${msg}</h1>
+<p>Are you my best friend or not? 🤍</p>
+<div class="options">
+<button onclick="yes()">YES 💕</button>
+<button onclick="no()">NO 💔</button>
+</div>
+`;
+}
+
+function yes(){
+screen.innerHTML=`
+<h1>YEAHHH 😍🎉</h1>
+<p>I knew it!!!</p>
+<button onclick="surprise()">Next ➜</button>
+`;
+}
+
+function surprise(){
+screen.innerHTML=`
+<h1>🎁 Here is a little surprise…</h1>
+<button onclick="note()">Open 💌</button>
+`;
+}
+
+function note(){
+screen.innerHTML=`
+<h1>💖 A Note From Me 💖</h1>
+
+<p style="text-align:left;line-height:1.65;margin-top:20px">
+
+Hey Izma… 🤍<br><br>
+
+It’s me — <b>Usman</b> ✨<br><br>
+
+This is just a tiny gift for my *best best* friend… the one who listens, understands, and somehow makes heavy days feel lighter without even trying.  
+
+I pray that every struggle in your life slowly fades away and that happiness keeps finding its way back to you again and again — because you truly deserve it.  
+
+Thank you… truly… for reacting to my reels, for talking to me, and for always making time. I’m honestly so grateful to have a girl best friend like you 🤍  
+
+And if destiny ever lets us meet one day… I’m stealing you for a café visit ☕😌  
+We’ll talk nonsense, laugh for no reason, and just enjoy being in that moment.  
+
+Thank you for being *you*, Izma 💕  
+
+</p>
+
+<h3 style="margin-top:18px;color:#ff4da6">— Usman 🌸</h3>
+`;
+}
+</script>
+
+</body>
+</html>
